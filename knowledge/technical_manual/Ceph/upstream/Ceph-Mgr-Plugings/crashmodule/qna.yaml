@@ -1,0 +1,103 @@
+version: 3
+created_by: Fredolin B Brone
+domain: opensource_storage
+seed_examples:
+  - context: |
+      The crash module collects information about daemon crashdumps and stores it in the Ceph cluster for analysis.
+      Enabling the module requires running:
+      ceph mgr module enable crash
+      Additionally, create an upload key with:
+      ceph auth get-or-create client.crash mon 'profile crash' mgr 'profile crash'
+    questions_and_answers:
+      - question: |
+          What is the purpose of the crash module in Ceph?
+        answer: |
+          The crash module collects daemon crashdumps and stores them in the Ceph cluster for analysis.
+      - question: |
+          How do you enable the crash module in Ceph?
+        answer: |
+          Enable it by running: ceph mgr module enable crash.
+      - question: |
+          How is the crash upload key generated?
+        answer: |
+          Use the command: ceph auth get-or-create client.crash mon 'profile crash' mgr 'profile crash'.
+  - context: |
+      Crashdumps are saved in /var/lib/ceph/crash by default, with directories named by timestamp, date, and UUID.
+      Use ceph-crash.service to watch the crashdump directory and upload crashes with ceph crash post.
+    questions_and_answers:
+      - question: |
+          Where are crashdumps stored by default?
+        answer: |
+          Crashdumps are stored in /var/lib/ceph/crash by default.
+      - question: |
+          How are crashdump directories named?
+        answer: |
+          They are named by timestamp, date, and a randomly generated UUID.
+      - question: |
+          What service watches the crashdump directory?
+        answer: |
+          The ceph-crash.service watches the crashdump directory.
+  - context: |
+      The crash module collects information about daemon crashdumps and stores it in the Ceph cluster for analysis.
+      Enabling the module requires running:
+      ceph mgr module enable crash
+      Additionally, create an upload key with:
+      ceph auth get-or-create client.crash mon 'profile crash' mgr 'profile crash'
+    questions_and_answers:
+      - question: |
+          What is the purpose of the crash module in Ceph?
+        answer: |
+          The crash module collects daemon crashdumps and stores them in the Ceph cluster for analysis.
+      - question: |
+          How do you enable the crash module in Ceph?
+        answer: |
+          Enable it by running: ceph mgr module enable crash.
+      - question: |
+          How do you create an upload key for the crash module?
+        answer: |
+          Use the command: ceph auth get-or-create client.crash mon 'profile crash' mgr 'profile crash'.
+  - context: |
+      Crashdumps are saved in /var/lib/ceph/crash by default, with directories named by timestamp, date, and UUID.
+      Use ceph-crash.service to watch the crashdump directory and upload crashes with ceph crash post.
+    questions_and_answers:
+      - question: |
+          Where are crashdumps stored by default?
+        answer: |
+          Crashdumps are stored in /var/lib/ceph/crash by default.
+      - question: |
+          How are crashdump directories named?
+        answer: |
+          Directories are named by timestamp, date, and a randomly generated UUID.
+      - question: |
+          What service automates crashdump uploads?
+        answer: |
+          The ceph-crash.service automates crashdump uploads.
+  - context: |
+      Useful commands include:
+      - ceph crash post -i : Save a crash dump.
+      - ceph crash rm : Remove a specific crash dump.
+      - ceph crash ls: List all crash reports.
+      - ceph crash stat: Show a summary of saved crash info grouped by age.
+      - ceph crash archive : Archive a crash report.
+      - ceph crash archive-all: Archive all new crash reports.
+      Important options:
+      - mgr/crash/warn_recent_interval [default: 2 weeks]: Defines the time period for recent crash warnings.
+      - mgr/crash/retain_interval [default: 1 year]: Sets how long crash reports are retained before purging.
+    questions_and_answers:
+      - question: |
+          How do you list all crash reports in Ceph?
+        answer: |
+          Use the command: ceph crash ls.
+      - question: |
+          What command archives a specific crash report?
+        answer: |
+          Use the command: ceph crash archive .
+      - question: |
+          How long are crash reports retained by default?
+        answer: |
+          Crash reports are retained for 1 year by default.
+document_outline: Teach the Large Language Model about the Crash Module
+document:
+  repo: git@github.com:pavankumarag/ceph-instructlab-taxonomy-data.git
+  commit: b60d0d0
+  patterns: [upstream/doc/mgr/crash.md]
